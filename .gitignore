@@ -1,7 +1,42 @@
+# Local files
 .DS_Store
-*.pyc
 *.egg-info
 *.swp
 tags
-node_modules
-__pycache__
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+
+# Frappe apps (each app has its own git repo)
+apps/
+
+# Frappe sites - ignore runtime data
+sites/*/private/
+sites/*/locks/
+sites/*/indexes/
+sites/*/logs/
+sites/*/backups/
+sites/*/.test_log
+sites/*/touched_tables.json
+
+# Redis / runtime files
+*.rdb
+*.lock
+
+# Frappe generated assets and site configs
+sites/assets/
+sites/common_site_config.json
+sites/*/
