@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Lead</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .app {
+      max-width: 420px;
+      margin: auto;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .header {
+      background: #FF9F43;
+      color: white;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .form {
+      padding: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #FF9F43;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .msg {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <div class="header">Create Lead</div>
+
+  <div class="form">
+    <label>Lead Name *</label>
+    <input id="lead_name" placeholder="Lead Name">
+
+    <label>Organization Name *</label>
+    <input id="organization_name" placeholder="Company / Shop Name">
+
+    <label>Phone</label>
+    <input id="phone" placeholder="Phone Number">
+
+    <label>Email</label>
+    <input id="email" placeholder="Email">
+
+    <label>Territory</label>
+    <input id="territory" value="India">
+
+    <button onclick="createLead()">Create Lead</button>
+
+    <div class="msg" id="msg"></div>
+  </div>
+</div>
+
+<script>
+/* Get CSRF token safely */
+function getCSRFToken() {
+  const match = document.cookie.match(/(csrf_token|_csrf_token)=([^;]+)/);
+  return match ? match[2] : null;
+}
+
+async function createLead() {
+  const msg = document.getElementById("msg");
+  msg.style.color = "#333";
+  msg.innerHTML = "Creating lead...";
+
+  const csrf = getCSRFToken();
+  if (!csrf) {
+    msg.style.color = "red";
+    msg.innerHTML = "CSRF token missing. Please login again.";
+    return;
+  }
+
+  const lead_name = document.getElementById("lead_name").value.trim();
+  const organization_name = document.getElementById("organization_name").value.trim();
+
+  if (!lead_name || !organization_name) {
+    msg.style.color = "red";
+    msg.innerHTML = "Lead Name and Organization Name are required";
+    return;
+  }
+
+  /* FormData (ERPNext-safe) */
+  const formData = new FormData();
+  formData.append("lead_name", lead_name);
+  formData.append("organization_name", organization_name);
+  formData.append("phone", document.getElementById("phone").value.trim());
+  formData.append("email", document.getElementById("email").value.trim());
+  formData.append("territory", document.getElementById("territory").value.trim());
+
+  try {
+    const res = await fetch(
+      "/api/method/route_sales.api.lead.create_lead",
+      {
+        method: "POST",
+        headers: {
+          "X-Frappe-CSRF-Token": csrf
+        },
+        body: formData
+      }
+    );
+
+    const data = await res.json();
+    console.log("API RESPONSE:", data);
+
+    if (data.message && data.message.status === "success") {
+      msg.style.color = "green";
+      msg.innerHTML = `Lead created successfully ✅ (${data.message.lead_id})`;
+
+      // optional reset
+      document.getElementById("lead_name").value = "";
+      document.getElementById("organization_name").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("email").value = "";
+    } else {
+      throw data;
+    }
+
+  } catch (err) {
+    console.error(err);
+    msg.style.color = "red";
+    msg.innerHTML = "Error creating lead ❌";
+  }
+}
+</script>
+
+</body>
+</html>
