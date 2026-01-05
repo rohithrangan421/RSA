@@ -1,0 +1,73 @@
+/* PAGE WRAPPER */
+/* .expense-page {
+  min-height: 100vh;
+  background: #fff7ef;
+  width: 100%;
+} */
+
+/* FULL-WIDTH ORANGE HEADER */
+/* .expense-header {
+  width: 100%;
+  background: #ff9f43;
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  box-sizing: border-box;
+} */
+
+/* BACK ARROW */
+/* .back-arrow {
+  font-size: 20px;
+  cursor: pointer;
+} */
+
+/* FORM CARD */
+/* .expense-card {
+  padding: 16px;
+} */
+
+/* INPUT GROUP */
+/* .input-group {
+  margin-bottom: 14px;
+} */
+
+/* .input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+} */
+
+/* .input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+} */
+
+/* PRIMARY BUTTON */
+/* .btn-primary {
+  width: 100%;
+  background: #ff9f43;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 16px;
+  cursor: pointer;
+} */
+
+/* MESSAGE */
+/* .msg {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+} */

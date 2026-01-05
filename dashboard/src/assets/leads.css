@@ -1,0 +1,90 @@
+/* PAGE */
+.leads-page {
+  background: #fff7ed;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.leads-header {
+  background: #ff9f43;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leads-header h3 {
+  margin: 0;
+}
+
+/* ADD BUTTON */
+.btn-add {
+  background: white;
+  color: #ff9f43;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* EMPTY */
+.empty-text {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}
+
+/* LIST */
+.leads-list {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD */
+.lead-card {
+  background: white;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ROW */
+.lead-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.lead-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.lead-info {
+  font-size: 13px;
+  color: #666;
+}
+
+/* STATUS */
+.lead-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  background: #ffe8cc;
+  color: #ff9f43;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* DELETE */
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #ff6b6b;
+  cursor: pointer;
+}
