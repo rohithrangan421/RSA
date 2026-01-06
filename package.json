@@ -1,38 +1,12 @@
 {
-<<<<<<< HEAD
   "name": "route_sales",
   "version": "1.0.0",
   "description": "route sales",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd dashboard && yarn install",
-    "dev": "cd dashboard && yarn dev",
-    "build": "cd dashboard && yarn build"
+    "postinstall": "cd apps/route_sales/dashboard && npm install",
+    "dev": "cd apps/route_sales/dashboard && npm run dev",
+    "build": "cd apps/route_sales/dashboard && npm run build"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC"
 }
-=======
-  "name": "newroutesales",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/material": "^7.3.6",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-router-dom": "^7.11.0",
-    "react-scripts": "^5.0.1"
-  }
-}
->>>>>>> 9575886 (Initial commit - frappe bench configuration)
