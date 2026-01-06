@@ -2,8 +2,8 @@ function Header({ userName }) {
   return (
     <div className="header">
       <div>
-        <h2>Good Afternoon</h2>
-        <h1>{userName}</h1>
+        <p className="greeting">Good Afternoon</p>
+        <h2>{userName}</h2>
       </div>
       <div className="profile">👤</div>
     </div>

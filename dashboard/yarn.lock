@@ -345,6 +345,11 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
+"@fontsource/roboto@^5.2.9":
+  version "5.2.9"
+  resolved "https://registry.npmjs.org/@fontsource/roboto/-/roboto-5.2.9.tgz"
+  integrity sha512-ZTkyHiPk74B/aj8BZWbsxD5Yu+Lq+nR64eV4wirlrac2qXR7jYk2h6JlLYuOuoruTkGQWNw2fMuKNavw7/rg0w==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.npmjs.org/@humanfs/core/-/core-0.19.1.tgz"
@@ -505,11 +510,6 @@
   version "4.53.3"
   resolved "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.53.3.tgz"
   integrity sha512-3EhFi1FU6YL8HTUJZ51imGJWEX//ajQPfqWLI3BQq4TlvHy4X0MOr5q3D2Zof/ka0d5FNdPwZXm3Yyib/UEd+w==
-
-"@rollup/rollup-linux-x64-musl@4.53.3":
-  version "4.53.3"
-  resolved "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.53.3.tgz"
-  integrity sha512-eoROhjcc6HbZCJr+tvVT8X4fW3/5g/WkGvvmwz/88sDtSJzO7r/blvoBDgISDiCjDRZmHpwud7h+6Q9JxFwq1Q==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.2"
