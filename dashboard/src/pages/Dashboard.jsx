@@ -209,9 +209,9 @@ export default function Dashboard() {
   <Card
     onClick={() => {
       if (title === "Sales") {
-        navigate("/customers");
+        navigate("customers");
       } else if (title === "Orders") {
-        navigate("/orders");
+        navigate("orders");
       }
     }}
     sx={{
