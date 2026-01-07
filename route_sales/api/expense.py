@@ -1,34 +1,38 @@
 import frappe
-from frappe.utils import today
 
-@frappe.whitelist(allow_guest=False)
-def create_expense():
-    frappe.flags.ignore_csrf = True 
+@frappe.whitelist()
+def create_expense(employee, expense_approver, company, expenses):
+    expenses = frappe.parse_json(expenses)
 
-    data = frappe.local.form_dict
+    if not employee:
+        frappe.throw("Employee is required")
 
-    employee = data.get("employee")
-    expense_type = data.get("expense_type")
-    amount = data.get("amount")
-    date = data.get("date")
-    notes = data.get("notes")
+    if not expense_approver:
+        frappe.throw("Expense Approver is required")
 
-    if not employee or not expense_type or not amount:
-        frappe.throw("Employee, Expense Type and Amount are required")
+    if not company:
+        frappe.throw("Company is required")
 
-    expense = frappe.new_doc("Expense Claim")
-    expense.employee = employee
-    expense.append("expenses", {
-        "expense_type": expense_type,
-        "amount": amount,
-        "posting_date": date,
-        "description": notes
-    })
+    ec = frappe.new_doc("Expense Claim")
+    ec.employee = employee
+    ec.expense_approver = expense_approver
+    ec.company = company
 
-    expense.insert(ignore_permissions=True)
+    for row in expenses:
+        if not row.get("expense_claim_type"):
+            frappe.throw("Expense Type missing")
+
+        ec.append("expenses", {
+            "expense_date": row.get("expense_date"),
+            "expense_type": row.get("expense_claim_type"),
+            "amount": row.get("amount"),
+            "description": row.get("description")
+        })
+
+    ec.insert(ignore_permissions=True)
     frappe.db.commit()
 
     return {
         "status": "success",
-        "expense_id": expense.name
+        "expense_claim": ec.name
     }

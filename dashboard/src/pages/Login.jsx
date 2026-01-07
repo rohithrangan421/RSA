@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { axiosClient } from "../lib/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,30 +26,31 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await fetch(
-        "/api/method/route_sales.api.login.login",
+      const payload = new URLSearchParams();
+      payload.append("usr", email);
+      payload.append("pwd", password);
+
+      const res = await axiosClient.post(
+        "/method/route_sales.api.login.login",
+        payload,
         {
-          method: "POST",
-          credentials: "include",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: new URLSearchParams({
-            usr: email,
-            pwd: password,
-          }),
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
 
       if (data.message?.status === "success") {
         navigate("/dashboard");
       } else {
         setError("Invalid username or password");
       }
-    } catch {
-      setError("Server error. Please try again.");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Server error. Please try again."
+      );
     } finally {
       setLoading(false);
     }
