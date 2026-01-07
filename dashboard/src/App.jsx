@@ -18,7 +18,7 @@ function App() {
     <HashRouter>
       <FrappeProvider>
         <Routes>
-          <Route path="/" element={<Navigate to="/sign-in" replace />} />
+          <Route path="/" element={<Navigate to="/sign-in" replace />} /> 
 
           <Route path="/sign-in" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />}>        
