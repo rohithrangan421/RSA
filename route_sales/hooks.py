@@ -248,4 +248,4 @@ app_license = "mit"
 # ignore_translatable_strings_from = []
 
 
-website_route_rules = [{'from_route': '/dashboard/<path:app_path>', 'to_route': 'dashboard'},]
+website_route_rules = [{'from_route': '/dashboard/<path:app_path>', 'to_route': 'dashboard'}, {'from_route': '/dashboard/<path:app_path>', 'to_route': 'dashboard'},]
