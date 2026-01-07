@@ -1,12 +1,11 @@
 {
   "name": "route_sales",
   "version": "1.0.0",
-  "description": "route sales",
+  "description": "Route Sales Frappe App",
   "private": true,
   "scripts": {
-    "postinstall": "cd apps/route_sales/dashboard && npm install",
-    "dev": "cd apps/route_sales/dashboard && npm run dev",
-    "build": "cd apps/route_sales/dashboard && npm run build"
-  },
-  "license": "ISC"
+    "postinstall": "cd dashboard && npm install",
+    "dev": "cd dashboard && npm run dev",
+    "build": "cd dashboard && npm run build"
+  }
 }
